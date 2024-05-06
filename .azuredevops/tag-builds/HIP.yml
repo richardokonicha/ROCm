@@ -23,6 +23,11 @@ resources:
     endpoint: ROCm
     name: ROCm/clr
     ref: ${{ parameters.checkoutRef }}
+  - repository: hipother_repo
+    type: github
+    endpoint: ROCm
+    name: ROCm/hipother
+    ref: ${{ parameters.checkoutRef }}
 
 trigger: none
 pr: none

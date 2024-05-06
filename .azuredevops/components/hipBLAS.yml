@@ -11,6 +11,7 @@ parameters:
     - cmake
     - ninja-build
     - rocblas
+    - rocsparse
     - rocsolver
     - gfortran
     - libopenblas-dev
