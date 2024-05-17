@@ -3,9 +3,9 @@ variables:
 - template: /.azuredevops/variables-global.yml
 
 parameters:
-- name: checkoutRef
+- name: lapackVersion
   type: string
-  default: refs/tags/v3.9.1
+  default: 3.9.1
 
 resources:
   repositories:
@@ -13,17 +13,11 @@ resources:
     type: github
     endpoint: ROCm
     name: ROCm/ROCm
-  - repository: release_repo
-    type: github
-    endpoint: Reference-LAPACK
-    name: Reference-LAPACK/lapack
-    ref: ${{ parameters.checkoutRef }}
 
 trigger: none
 pr: none
 
 jobs:
-  - template: ${{ variables.CI_COMPONENT_PATH }}/lapack.yml
+  - template: ${{ variables.CI_DEPENDENCIES_PATH }}/lapack.yml
     parameters:
-      checkoutRepo: release_repo
-      checkoutRef: ${{ parameters.checkoutRef }}
+      lapackVersion: ${{ parameters.lapackVersion }}
