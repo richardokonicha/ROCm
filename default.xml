@@ -16,6 +16,7 @@
     <project name="rocm_bandwidth_test" />
     <project name="rocm_smi_lib" />
     <project name="rocm-core" />
+    <project name="rocm-examples" />
     <project name="rocminfo" />
     <project name="rocprofiler" />
     <project name="rocprofiler-register" />
@@ -57,6 +58,7 @@
     <project groups="mathlibs" name="rocALUTION" />
     <project groups="mathlibs" name="rocBLAS" />
     <project groups="mathlibs" name="rocDecode" />
+    <project groups="mathlibs" name="rocPyDecode" />
     <project groups="mathlibs" name="rocFFT" />
     <project groups="mathlibs" name="rocPRIM" />
     <project groups="mathlibs" name="rocRAND" />
