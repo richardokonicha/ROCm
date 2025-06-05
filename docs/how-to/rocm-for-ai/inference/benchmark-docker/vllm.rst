@@ -24,7 +24,7 @@ vLLM inference performance testing
 
    * `vLLM {{ unified_docker.vllm_version }} <https://docs.vllm.ai/en/latest>`_
 
-   * `PyTorch {{ unified_docker.pytorch_version }} <https://github.com/pytorch/pytorch>`_
+   * `PyTorch {{ unified_docker.pytorch_version }} <https://github.com/ROCm/pytorch.git>`_
 
    * `hipBLASLt {{ unified_docker.hipblaslt_version }} <https://github.com/ROCm/hipBLASLt>`_
 
@@ -355,6 +355,13 @@ for benchmarking, see the version-specific documentation.
      - vLLM version
      - PyTorch version
      - Resources
+
+   * - 6.3.1
+     - 0.8.5
+     - 2.7.0
+     - 
+       * :doc:`Documentation <previous-versions/vllm-0.8.5-20250513>`
+       * `Docker Hub <https://hub.docker.com/layers/rocm/vllm/rocm6.3.1_vllm_0.8.5_20250513/images/sha256-5c8b4436dd0464119d9df2b44c745fadf81512f18ffb2f4b5dc235c71ebe26b4>`_
 
    * - 6.3.1
      - 0.8.3
