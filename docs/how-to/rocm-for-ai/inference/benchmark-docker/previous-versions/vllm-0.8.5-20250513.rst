@@ -12,7 +12,7 @@ vLLM inference performance testing
 .. caution::
 
    This documentation does not reflect the latest version of ROCm vLLM
-   performance benchmark documentation. See :doc:`../vllm` for the latest version.
+   inference performance documentation. See :doc:`../vllm` for the latest version.
 
 .. _vllm-benchmark-unified-docker:
 
@@ -109,18 +109,18 @@ vLLM inference performance testing
    page provides reference throughput and latency measurements for inferencing
    popular AI models.
 
-   .. note::
+   .. important::
 
       The performance data presented in
       `Performance results with AMD ROCm software <https://www.amd.com/en/developer/resources/rocm-hub/dev-ai/performance-results.html>`_
-      should not be interpreted as the peak performance achievable by AMD
-      Instinct MI325X and MI300X accelerators or ROCm software.
+      only reflects the :doc:`latest version of this inference benchmarking environment <../vllm>`_.
+      The listed measurements should not be interpreted as the peak performance achievable by AMD Instinct MI325X and MI300X accelerators or ROCm software.
 
    Advanced features and known issues
    ==================================
 
    For information on experimental features and known issues related to ROCm optimization efforts on vLLM,
-   see the developer's guide at `<https://github.com/ROCm/vllm/blob/7bb0618b1fe725b7d4fad9e525aa44da12c94a8b/docs/dev-docker/README.md>`__.
+   see the developer's guide at `<https://github.com/ROCm/vllm/tree/16d2b92ebcf90fe55cf73fa0b9329a6c9d3dede8/docs/dev-docker>`__.
 
    System validation
    =================
@@ -346,3 +346,9 @@ Further reading
 
 - To learn how to fine-tune LLMs, see
   :doc:`Fine-tuning LLMs <../../../fine-tuning/index>`.
+
+Previous versions
+=================
+
+See :doc:`vllm-history` to find documentation for previous releases
+of the ``ROCm/vllm`` Docker image.
