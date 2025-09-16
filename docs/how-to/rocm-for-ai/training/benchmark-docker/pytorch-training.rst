@@ -1,9 +1,11 @@
+:orphan:
+
 .. meta::
    :description: How to train a model using PyTorch for ROCm.
    :keywords: ROCm, AI, LLM, train, PyTorch, torch, Llama, flux, tutorial, docker
 
 **************************************
-Training a model with PyTorch for ROCm
+Training a model with PyTorch on ROCm
 **************************************
 
 PyTorch is an open-source machine learning framework that is widely used for
@@ -388,7 +390,7 @@ Run training
                .. note::
 
                   Currently, FLUX models are not supported out-of-the-box on {{ unified_docker.pull_tag }}.
-                  To use FLUX, refer to the previous version of the ``pytorch-training`` Docker: :doc:`previous-versions/pytorch-training-v25.6`
+                  To use FLUX, refer to ``rocm/pytorch-training`` Docker: :doc:`previous-versions/pytorch-training-v25.6`
 
                   Occasionally, downloading the Flux dataset might fail. In the event of this
                   error, manually download it from Hugging Face at
