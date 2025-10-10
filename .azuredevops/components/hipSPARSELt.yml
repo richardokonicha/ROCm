@@ -54,6 +54,7 @@ parameters:
     - hipSPARSE
     - llvm-project
     - rocBLAS
+    - rocm-cmake
     - rocm_smi_lib
     - rocminfo
     - rocprofiler-register
@@ -67,6 +68,7 @@ parameters:
     - llvm-project
     - hipBLAS-common
     - hipBLASLt
+    - rocm-cmake
     - rocBLAS
     - rocminfo
     - rocprofiler-register
@@ -110,7 +112,7 @@ jobs:
         aptPackages: ${{ parameters.aptPackages }}
         pipModules: ${{ parameters.pipModules }}
         packageManager: ${{ job.packageManager }}
-    - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/dependencies-cmake-latest.yml
+    - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/dependencies-cmake-custom.yml
     - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/preamble.yml
     - template: ${{ variables.CI_TEMPLATE_PATH }}/steps/checkout.yml
       parameters:
