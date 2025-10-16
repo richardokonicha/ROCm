@@ -10,7 +10,7 @@ Training a model with PyTorch for ROCm
 
 .. caution::
 
-   This documentation does not reflect the latest version of ROCm vLLM
+   This documentation does not reflect the latest version of ROCm PyTorch training
    performance benchmark documentation. See :doc:`../pytorch-training` for the latest version.
 
 PyTorch is an open-source machine learning framework that is widely used for
