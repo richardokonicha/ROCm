@@ -9,7 +9,7 @@
 xDiT diffusion inference
 ************************
 
-.. _xdit-video-diffusion:
+.. _xdit-video-diffusion-2510:
 
 .. datatemplate:yaml:: /data/how-to/rocm-for-ai/inference/previous-versions/xdit_25.10-inference-models.yaml
 
@@ -152,7 +152,7 @@ run benchmarks and generate outputs.
      {% endfor %}
    {% endfor %}
 
-.. _xdit-video-diffusion-setup:
+.. _xdit-video-diffusion-setup-2510:
 
 Prepare the model
 -----------------
@@ -160,7 +160,7 @@ Prepare the model
 .. note::
 
    If you're using ROCm MAD to :ref:`run your model
-   <xdit-video-diffusion-run>`, you can skip this section. MAD will handle
+   <xdit-video-diffusion-run-2510>`, you can skip this section. MAD will handle
    starting the container and downloading required models inside the container.
 
 You can either use an existing Hugging Face cache or download the model fresh inside the container.
@@ -255,7 +255,7 @@ You can either use an existing Hugging Face cache or download the model fresh in
      {% endfor %}
    {% endfor %}
 
-.. _xdit-video-diffusion-run:
+.. _xdit-video-diffusion-run-2510:
 
 Run inference
 =============
