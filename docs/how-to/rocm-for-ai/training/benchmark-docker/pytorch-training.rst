@@ -43,7 +43,7 @@ training workloads:
               - {{ component_version }}
             {% endfor %}
 
-.. _amd-pytorch-training-model-support-v2510:
+.. _amd-pytorch-training-model-support-v25.11:
 
 Supported models
 ================
@@ -85,7 +85,7 @@ one to get started.
          </div>
       </div>
 
-.. _amd-pytorch-training-supported-training-modes-v2510:
+.. _amd-pytorch-training-supported-training-modes-v25.11:
 
 The following table lists supported training modes per model.
 
@@ -120,7 +120,7 @@ The following table lists supported training modes per model.
          unlisted fine-tuning methods by using an existing file in the
          ``/workspace/torchtune/recipes/configs`` directory as a template.
 
-.. _amd-pytorch-training-performance-measurements-v2510:
+.. _amd-pytorch-training-performance-measurements-v25.11:
 
 Performance measurements
 ========================
@@ -176,7 +176,7 @@ Run training
          .. container:: model-doc {{ model.mad_tag }}
 
             The following run command is tailored to {{ model.model }}.
-            See :ref:`amd-pytorch-training-model-support-v2510` to switch to another available model.
+            See :ref:`amd-pytorch-training-model-support-v25.11` to switch to another available model.
 
             1. Clone the ROCm Model Automation and Dashboarding (`<https://github.com/ROCm/MAD>`__) repository to a local
                directory and install the required packages on the host machine.
@@ -214,7 +214,7 @@ Run training
          .. container:: model-doc {{ model.mad_tag }}
 
             The following commands are tailored to {{ model.model }}.
-            See :ref:`amd-pytorch-training-model-support-v2510` to switch to another available model.
+            See :ref:`amd-pytorch-training-model-support-v25.11` to switch to another available model.
 
       {% endfor %}
    {% endfor %}
@@ -532,7 +532,7 @@ Run training
 
             To start the fine-tuning benchmark, use the following command with the
             appropriate options. See the following list of options and their descriptions.
-            See :ref:`supported training modes <amd-pytorch-training-supported-training-modes-v2510>`.
+            See :ref:`supported training modes <amd-pytorch-training-supported-training-modes-v25.11>`.
 
             .. code-block:: shell
 
@@ -597,7 +597,7 @@ Run training
 
             For examples of benchmarking commands, see `<https://github.com/ROCm/MAD/tree/develop/benchmark/pytorch_train#benchmarking-examples>`__.
 
-.. _amd-pytorch-training-multinode-examples-v2510:
+.. _amd-pytorch-training-multinode-examples-v25.11:
 
 Multi-node training
 -------------------
