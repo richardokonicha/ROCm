@@ -22,7 +22,7 @@ xDiT diffusion inference
    The image runs ROCm **{{docker.ROCm}}** (preview) based on `TheRock <https://github.com/ROCm/TheRock>`_
    and includes the following components:
 
-   .. dropdown:: Software components
+   .. dropdown:: Software components - {{ docker.pull_tag.split('-')|last }}
 
       .. list-table::
          :header-rows: 1
@@ -40,7 +40,6 @@ For preview and development releases, see `amdsiloai/pytorch-xdit <https://hub.d
 
 What's new
 ==========
-
 .. datatemplate:yaml:: /data/how-to/rocm-for-ai/inference/xdit-inference-models.yaml
 
    {% set docker = data.docker %}
@@ -104,6 +103,22 @@ vary by model -- select one to get started.
 
        {% endfor %}
    {% endfor %}
+
+Performance measurements
+========================
+
+To evaluate performance, the `Performance results with AMD ROCm software
+<https://www.amd.com/en/developer/resources/rocm-hub/dev-ai/performance-results.html#tabs-a8543b7e6d-item-9eda09e707-tab>`__
+page provides reference throughput and serving measurements for inferencing popular AI models.
+
+.. important::
+
+   The performance data presented in `Performance results with AMD ROCm
+   software
+   <https://www.amd.com/en/developer/resources/rocm-hub/dev-ai/performance-results.html#tabs-a8543b7e6d-item-9eda09e707-tab>`__
+   only reflects the latest version of this inference benchmarking environment.
+   The listed measurements should not be interpreted as the peak performance
+   achievable by AMD Instinct GPUs or ROCm software.
 
 System validation
 =================
@@ -311,7 +326,7 @@ Run inference
 
             {% endif %}
             {% if model.model == "Wan2.1" %}
-               cd Wan
+               cd /app/Wan
                mkdir results
 
                torchrun --nproc_per_node=8 /app/Wan/run.py \
@@ -330,7 +345,7 @@ Run inference
 
             {% endif %}
             {% if model.model == "Wan2.2" %}
-               cd Wan
+               cd /app/Wan
                mkdir results
 
                torchrun --nproc_per_node=8 /app/Wan/run.py \
@@ -350,7 +365,7 @@ Run inference
             {% endif %}
 
             {% if model.model == "FLUX.1" %}
-               cd Flux
+               cd /app/Flux
                mkdir results
 
                torchrun --nproc_per_node=8 /app/Flux/run.py \
@@ -369,8 +384,54 @@ Run inference
 
             {% endif %}
 
+            {% if model.model == "FLUX.1 Kontext" %}
+               cd /app/Flux
+               mkdir results
+
+               torchrun --nproc_per_node=8 /app/Flux/run_usp.py \
+                  --model {{ model.model_repo }} \
+                  --seed 42 \
+                  --prompt "Add a cool hat to the cat" \
+                  --height 1024 \
+                  --width 1024 \
+                  --num_inference_steps 30 \
+                  --max_sequence_length 512 \
+                  --warmup_steps 5 \
+                  --no_use_resolution_binning \
+                  --ulysses_degree 8 \
+                  --use_torch_compile \
+                  --img_file_path /app/Flux/cat.png \
+                  --model_type flux_kontext \
+                  --guidance_scale 2.5 \
+                  --num_repetitions 25
+
+            {% endif %}
+
+            {% if model.model == "FLUX.2" %}
+               cd /app/Flux
+               mkdir results
+
+               torchrun --nproc_per_node=8 /app/Flux/run_usp.py \
+                  --model {{ model.model_repo }} \
+                  --seed 42 \
+                  --prompt "Add a cool hat to the cat" \
+                  --height 1024 \
+                  --width 1024 \
+                  --num_inference_steps 50 \
+                  --max_sequence_length 512 \
+                  --warmup_steps 5 \
+                  --no_use_resolution_binning \
+                  --ulysses_degree 8 \
+                  --use_torch_compile \
+                  --img_file_paths /app/Flux/cat.png \
+                  --model_type flux2 \
+                  --guidance_scale 4.0 \
+                  --num_repetitions 25
+
+            {% endif %}
+
             {% if model.model == "stable-diffusion-3.5-large" %}
-               cd StableDiffusion3.5 
+               cd /app/StableDiffusion3.5 
                mkdir results
 
                torchrun --nproc_per_node=8 /app/StableDiffusion3.5/run.py \
@@ -386,7 +447,7 @@ Run inference
 
             {% endif %}
 
-            The generated video will be stored under the results directory. For the actual benchmark step runtimes, see {% if model.model == "Hunyuan Video" %}stdout.{% elif model.model in ["Wan2.1", "Wan2.2"] %}results/outputs/rank0_*.json{% elif model.model == "FLUX.1" %}results/timing.json{% elif model.model == "stable-diffusion-3.5-large"%}benchmark_results.csv{% endif %}
+            The generated video will be stored under the results directory. For the actual benchmark step runtimes, see {% if model.model == "Hunyuan Video" %}stdout.{% elif model.model in ["Wan2.1", "Wan2.2"] %}results/outputs/rank0_*.json{% elif model.model in ["FLUX.1", "FLUX.1 Kontext", "FLUX.2"] %}results/timing.json{% elif model.model == "stable-diffusion-3.5-large"%}benchmark_results.csv{% endif %}
 
             {% if model.model == "FLUX.1" %}You may also use ``run_usp.py`` which implements USP without modifying the default diffusers pipeline. {% endif %}
 
