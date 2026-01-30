@@ -37,7 +37,7 @@ GPUs containing essential components, including PyTorch, ROCm libraries, and
 Megatron-LM utilities. It contains the following software components to
 accelerate training workloads:
 
-.. datatemplate:yaml:: /data/how-to/rocm-for-ai/training/megatron-lm-benchmark-models.yaml
+.. datatemplate:yaml:: /data/how-to/rocm-for-ai/training/previous-versions/megatron-lm-v25.10-benchmark-models.yaml
 
    .. tab-set::
 
@@ -146,7 +146,7 @@ image.
 Download the Docker image
 -------------------------
 
-.. datatemplate:yaml:: /data/how-to/rocm-for-ai/training/megatron-lm-benchmark-models.yaml
+.. datatemplate:yaml:: /data/how-to/rocm-for-ai/training/previous-versions/megatron-lm-v25.10-benchmark-models.yaml
 
    {% set docker = data.docker %}
    1. Use the following command to pull the Docker image from Docker Hub.
@@ -811,7 +811,7 @@ Single node training
       Note that DeepSeek-V2-Lite is experiencing instability due to GPU memory access fault
       for large iterations.
       For stability, it's recommended to use Primus for this workload.
-      See :doc:`primus-megatron`.
+      See :doc:`../primus-megatron`.
 
 .. container:: model-doc pyt_megatron_lm_train_mixtral-8x7b
 

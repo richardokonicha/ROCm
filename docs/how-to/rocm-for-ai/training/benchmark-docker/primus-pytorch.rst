@@ -45,7 +45,7 @@ with Primus Turbo optimizations.
               - {{ component_version }}
             {% endfor %}
 
-.. _amd-primus-pytorch-model-support-v25.11:
+.. _amd-primus-pytorch-model-support-v26.01:
 
 Supported models
 ================
@@ -91,7 +91,7 @@ vary by model -- select one to get started.
    For additional workloads, including Llama 3.3, Llama 3.2, Llama 2, GPT OSS, Qwen, and Flux models,
    see the documentation :doc:`pytorch-training` (without Primus)
 
-.. _amd-primus-pytorch-performance-measurements-v25.11:
+.. _amd-primus-pytorch-performance-measurements-v26.01:
 
 System validation
 =================
@@ -146,7 +146,7 @@ tweak some configurations (such as batch sizes).
          .. container:: model-doc {{ model.mad_tag }}
 
             The following run command is tailored to {{ model.model }}.
-            See :ref:`amd-primus-pytorch-model-support-v25.11` to switch to another available model.
+            See :ref:`amd-primus-pytorch-model-support-v26.01` to switch to another available model.
 
             1. Clone the ROCm Model Automation and Dashboarding (`<https://github.com/ROCm/MAD>`__) repository to a local
                directory and install the required packages on the host machine.
@@ -184,7 +184,7 @@ tweak some configurations (such as batch sizes).
          .. container:: model-doc {{ model.mad_tag }}
 
             The following run commands are tailored to {{ model.model }}.
-            See :ref:`amd-primus-pytorch-model-support-v25.11` to switch to another available model.
+            See :ref:`amd-primus-pytorch-model-support-v26.01` to switch to another available model.
 
             .. rubric:: Download the Docker image and required packages
 
@@ -220,8 +220,8 @@ tweak some configurations (such as batch sizes).
                   docker start training_env
                   docker exec -it training_env bash
 
-               The Docker container hosts verified commit ``c4c083de`` of the `Primus
-               <https://github.com/AMD-AGI/Primus/tree/c4c083de64ba3e8f19ccc9629411267108931f9e/>`__ repository.
+               The Docker container hosts verified commit ``9c529cd4`` of the `Primus
+               <https://github.com/AMD-AGI/Primus/tree/9c529cd4a934a68a880ede036c3e97b792e38167/>`__ repository.
 
             .. rubric:: Prepare training datasets and dependencies
 
@@ -257,24 +257,31 @@ tweak some configurations (such as batch sizes).
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI355X/llama3.1_8B-BF16-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_8B.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI355X/llama3.1_8B-BF16-pretrain.yaml
 
                   .. tab-item:: MI325X
                      :sync: MI325X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_8B-BF16-pretrain.yaml \
-                        bash examples/run_pretrain.sh --training.local_batch_size 6 
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_8B.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_8B-BF16-pretrain.yaml \
+                          --training.local_batch_size 6
 
                   .. tab-item:: MI300X
                      :sync: MI300X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_8B-BF16-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_8B.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_8B-BF16-pretrain.yaml
 
                To train Llama 3.1 8B with FP8 precision, use the following command.
 
@@ -285,24 +292,31 @@ tweak some configurations (such as batch sizes).
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI355X/llama3.1_8B-FP8-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_8B_fp8.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI355X/llama3.1_8B-FP8-pretrain.yaml
 
                   .. tab-item:: MI325X
                      :sync: MI325X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_8B-FP8-pretrain.yaml \
-                        bash examples/run_pretrain.sh --training.local_batch_size 7 
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_8B_fp8.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_8B-FP8-pretrain.yaml \
+                          --training.local_batch_size 7
 
                   .. tab-item:: MI300X
                      :sync: MI300X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_8B-FP8-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_8B_fp8.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_8B-FP8-pretrain.yaml
 
             .. container:: model-doc primus_pyt_train_llama-3.1-70b
 
@@ -315,24 +329,31 @@ tweak some configurations (such as batch sizes).
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI355X/llama3.1_70B-BF16-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_70B.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI355X/llama3.1_70B-BF16-pretrain.yaml
 
                   .. tab-item:: MI325X
                      :sync: MI325X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_70B-BF16-pretrain.yaml \
-                        bash examples/run_pretrain.sh --training.local_batch_size 6 
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_70B.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_70B-BF16-pretrain.yaml \
+                          --training.local_batch_size 6
 
                   .. tab-item:: MI300X
                      :sync: MI300X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_70B-BF16-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_70B.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_70B-BF16-pretrain.yaml
 
                To train Llama 3.1 70B with FP8 precision, use the following command.
 
@@ -343,24 +364,31 @@ tweak some configurations (such as batch sizes).
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI355X/llama3.1_70B-FP8-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_70B_fp8.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI355X/llama3.1_70B-FP8-pretrain.yaml
 
                   .. tab-item:: MI325X
                      :sync: MI325X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_70B-FP8-pretrain.yaml \
-                        bash examples/run_pretrain.sh --training.local_batch_size 5 
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_70B_fp8.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_70B-FP8-pretrain.yaml \
+                          --training.local_batch_size 5
 
                   .. tab-item:: MI300X
                      :sync: MI300X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/llama3.1_70B-FP8-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_llama3.1_70B_fp8.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/llama3.1_70B-FP8-pretrain.yaml
 
             .. container:: model-doc primus_pyt_train_deepseek-v3-16b
 
@@ -373,24 +401,31 @@ tweak some configurations (such as batch sizes).
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI355X/deepseek_v3_16b-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_deepseek_v3_16b.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI355X/deepseek_v3_16b-pretrain.yaml
 
                   .. tab-item:: MI325X
                      :sync: MI325X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/deepseek_v3_16b-pretrain.yaml \
-                        bash examples/run_pretrain.sh --training.local_batch_size 10 
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_deepseek_v3_16b.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/deepseek_v3_16b-pretrain.yaml \
+                          --training.local_batch_size 10
 
                   .. tab-item:: MI300X
                      :sync: MI300X
 
                      .. code-block:: shell
 
-                        EXP=examples/torchtitan/configs/MI300X/deepseek_v3_16b-pretrain.yaml \
-                        bash examples/run_pretrain.sh
+                        bash runner/primus-cli direct \
+                          --log_file /tmp/primus_deepseek_v3_16b.log \
+                          -- train pretrain \
+                          --config examples/torchtitan/configs/MI300X/deepseek_v3_16b-pretrain.yaml
       {% endfor %}
    {% endfor %}
 
