@@ -11,7 +11,7 @@ xDiT diffusion inference
 
 .. caution::
 
-   This documentation does not reflect the latest version of ROCm vLLM
+   This documentation does not reflect the latest version of xDiT diffusion
    inference performance documentation. See
    :doc:`/how-to/rocm-for-ai/inference/xdit-diffusion-inference` for the latest
    version.
@@ -293,7 +293,7 @@ Run inference
                       --tags {{model.mad_tag}} \
                       --keep-model-dir \
                       --live-output
-                     
+
             MAD launches a Docker container with the name
             ``container_ci-{{model.mad_tag}}``. The throughput and serving reports of the
             model are collected in the following paths: ``{{ model.mad_tag }}_throughput.csv``
@@ -379,7 +379,7 @@ Run inference
             {% endif %}
 
             {% if model.model == "stable-diffusion-3.5-large" %}
-               cd StableDiffusion3.5 
+               cd StableDiffusion3.5
                mkdir results
 
                torchrun --nproc_per_node=8 /app/StableDiffusion3.5/run.py \
