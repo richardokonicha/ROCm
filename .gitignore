@@ -1,5 +1,4 @@
 .venv
-.vscode
 build
 __pycache__
 
@@ -10,6 +9,7 @@ __pycache__/
 _static/
 _templates/
 _toc.yml
+temp_auto_push.bat
 docBin/
 _doxygen/
 _readthedocs/
@@ -22,3 +22,5 @@ docs/release/changelog.md
 # assembled at Sphinx build time by remote_yaml extension — do not commit
 docs/data/reference/precision-support/precision-support.yaml
 .claude/settings.local.json
+.gitignore
+branch_structure.json
